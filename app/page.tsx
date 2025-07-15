@@ -13,8 +13,13 @@ export default function HomePage() {
       {/* Header */}
       <header className="bg-gray-900 text-white py-4 sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <LunaLogo className="text-white" size="md" showTagline={true} />
+          <div className="flex items-center space-x-3 bg-white rounded p-1">
+            <Image
+              src="/images/Luna Concrete Logo.png"
+              alt="Luna Concrete Logo"
+              width={48}
+              height={48}
+              className="object-contain h-12 w-auto"/>
           </div>
           <div className="hidden md:flex items-center space-x-6">
             <Link href="#services" className="hover:text-orange-500 transition-colors">
@@ -44,8 +49,7 @@ export default function HomePage() {
                 <span className="text-orange-500 font-semibold">Trusted Since 1994</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Denver's Trusted
-                <span className="text-orange-500"> Luna Concrete</span> Specialists
+                Denver's Trusted Concrete Specialists
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 Over 30 years of delivering exceptional concrete solutions across the Denver metro area. From driveways
@@ -77,11 +81,11 @@ export default function HomePage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=500&width=600&text=Professional+Concrete+Services"
+                src="/images/Luna Concrete Logo.png"
                 alt="Luna Concrete - Professional concrete services in Denver"
                 width={600}
                 height={500}
-                className="rounded-lg shadow-2xl"
+                className="bg-white rounded-lg shadow-2xl"
                 priority
               />
               <div className="absolute -bottom-6 -left-6 bg-orange-600 text-white p-4 rounded-lg shadow-lg">
@@ -159,7 +163,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative group overflow-hidden rounded-lg">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="/images/Patio.jpeg"
                 alt="Beautiful concrete driveway project in Denver"
                 width={400}
                 height={300}
@@ -318,8 +322,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <LunaLogo className="text-white" size="sm" />
+              <div className="flex items-center space-x-2 mb-4 bg-white rounded p-1">
+                <Image
+                  src="/images/Luna Concrete Logo.png"
+                  alt="Luna Concrete Logo"
+                  width={48}
+                  height={48}
+                  className="object-contain h-12 w-auto"
+                />
               </div>
               <p className="text-gray-400 mb-4">
                 Serving the Denver metro area with professional concrete services for over 30 years.
