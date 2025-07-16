@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Phone, Mail, MapPin, Star, Calendar, Award } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { LunaLogo } from "@/components/luna-logo"
 
 export default function HomePage() {
   return (
@@ -33,7 +32,9 @@ export default function HomePage() {
             </Link>
             <Button className="bg-orange-600 hover:bg-orange-700">
               <Phone className="h-4 w-4 mr-2" />
-              (303) 880-9483
+              <a href="tel:3038809483">
+                (303) 880-9483
+              </a>
             </Button>
           </div>
         </div>
@@ -58,8 +59,11 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-lg px-8">
                   <Phone className="h-5 w-5 mr-2" />
-                  Get Free Quote
+                  <a href="tel:3038809483">
+                    Get Free Quote
+                  </a>
                 </Button>
+                <Link href="#gallery">
                 <Button
                   size="lg"
                   variant="outline"
@@ -67,6 +71,7 @@ export default function HomePage() {
                 >
                   View Our Work
                 </Button>
+              </Link>
               </div>
               <div className="flex items-center space-x-6 text-sm">
                 <div className="flex items-center space-x-1">
@@ -79,18 +84,26 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="relative">
+           <div className="relative w-full max-w-xl mx-auto">
+              {/* Main background image */}
               <Image
-                src="/images/Luna Concrete Logo.png"
-                alt="Luna Concrete - Professional concrete services in Denver"
+                src="/images/Patio.jpeg"
+                alt="Main project photo"
                 width={600}
-                height={500}
-                className="bg-white rounded-lg shadow-2xl"
+                height={400}
+                className="rounded-lg w-full object-cover"
                 priority
               />
-              <div className="absolute -bottom-6 -left-6 bg-orange-600 text-white p-4 rounded-lg shadow-lg">
-                <div className="text-2xl font-bold">30+</div>
-                <div className="text-sm">Years Experience</div>
+              {/* Logo banner overlay */}
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full bg-white rounded-b-lg shadow-lg flex justify-center items-center py-2">
+                <Image
+                  src="/images/Luna Concrete Logo.png"
+                  alt="Luna Concrete Logo"
+                  width={100} // Adjust as needed
+                  height={60} // Adjust as needed
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -178,11 +191,36 @@ export default function HomePage() {
             </div>
 
             {/* Placeholder for additional gallery images */}
-            {[1, 2, 3, 4, 5].map((item) => (
-              <div key={item} className="relative group overflow-hidden rounded-lg">
+            {[{
+    'src': "/images/TransitoStairs.jpeg",
+    'alt': "Concrete stairs project in Denver",
+    'title': "Staircase Project",
+    'description': "Durable and safe concrete stairs",
+  }, {
+    'src': "/images/Patio.jpeg",
+    'alt': "Beautiful concrete patio in Denver",
+    'title': "Residential Patio",
+    'description': "Custom concrete patio with decorative finish",
+  }, {
+    'src': "/images/TransitoDeck.jpeg",
+    'alt': "Concrete deck project",
+    'title': "Deck Installation",
+    'description': "Stylish and durable concrete deck",
+  }, {
+    'src': "/images/TransitoPattern.jpeg",
+    'alt': "Concrete pattern project",
+    'title': "Patterned Concrete",
+    'description': "Unique and stylish patterned concrete",
+  }, {
+    'src': "/images/TransitoPatio.jpeg",
+    'alt': "Concrete patio project",
+    'title': "Patio Installation",
+    'description': "Beautiful and functional concrete patio",
+  }].map((item, index) => (
+              <div key={index} className="relative group overflow-hidden rounded-lg">
                 <Image
-                  src={`/placeholder.svg?height=300&width=400&text=Project ${item + 1}`}
-                  alt={`Concrete project ${item + 1} - Denver area`}
+                  src={item.src || "/images/Patio.jpeg"}
+                  alt={item.alt || `Concrete project - Denver area`}
                   width={400}
                   height={300}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -213,11 +251,15 @@ export default function HomePage() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-orange-500" />
-                  <span className="text-lg">(303) 880-9483</span>
+                  <a href="tel:3038809483" className="text-lg hover:underline">
+                    (303) 880-9483
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-orange-500" />
-                  <span>info@lunaconcrete.com</span>
+                  <a href="mailto:info@lunaconcrete.com" className="text-lg hover:underline">
+                    <span>info@lunaconcrete.com</span>
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-orange-500" />
