@@ -46,6 +46,28 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+                       <div className="relative w-full max-w-xl mx-auto">
+              {/* Main background image */}
+              <Image
+                src="/images/Patio.jpeg"
+                alt="Main project photo"
+                width={600}
+                height={400}
+                className="rounded-lg w-full object-cover"
+                priority
+              />
+              {/* Logo banner overlay */}
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full bg-white rounded-b-lg shadow-lg flex justify-center items-center py-2">
+                <Image
+                  src="/images/Luna Concrete Logo.png"
+                  alt="Luna Concrete Logo"
+                  width={100} // Adjust as needed
+                  height={60} // Adjust as needed
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Award className="h-6 w-6 text-orange-500" />
@@ -84,28 +106,6 @@ export default function HomePage() {
                   <Calendar className="h-4 w-4 text-orange-500" />
                   <span>Free Estimates</span>
                 </div>
-              </div>
-            </div>
-           <div className="relative w-full max-w-xl mx-auto">
-              {/* Main background image */}
-              <Image
-                src="/images/Patio.jpeg"
-                alt="Main project photo"
-                width={600}
-                height={400}
-                className="rounded-lg w-full object-cover"
-                priority
-              />
-              {/* Logo banner overlay */}
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full bg-white rounded-b-lg shadow-lg flex justify-center items-center py-2">
-                <Image
-                  src="/images/Luna Concrete Logo.png"
-                  alt="Luna Concrete Logo"
-                  width={100} // Adjust as needed
-                  height={60} // Adjust as needed
-                  className="object-contain"
-                  priority
-                />
               </div>
             </div>
           </div>
