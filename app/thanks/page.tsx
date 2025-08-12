@@ -43,12 +43,44 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
+            <div className="flex items-center space-x-2 mb-4">
                 <Award className="h-6 w-6 text-orange-500" />
                 <span className="text-orange-500 font-semibold">Trusted Since 1994</span>
+            </div>
+            <div>
+              <Card className="bg-white text-gray-900">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Request Submitted!</h3>
+                 <p>Thank you for your inquiry, we'll be in touch shortly with your free quote.</p>
+                </CardContent>
+              </Card>
+            </div>
+         <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative w-full max-w-xl mx-auto">
+              {/* Main background image */}
+              <Image
+                src="/images/Patio.jpeg"
+                alt="Main project photo"
+                width={600}
+                height={400}
+                className="rounded-lg w-full object-cover"
+                priority
+              />
+              {/* Logo banner overlay */}
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full bg-white rounded-b-lg shadow-lg flex justify-center items-center py-2">
+                <Image
+                  src="/images/Luna Concrete Logo.png"
+                  alt="Luna Concrete Logo"
+                  width={100} // Adjust as needed
+                  height={60} // Adjust as needed
+                  className="object-contain"
+                  priority
+                />
               </div>
+            </div>
+
+            <div>
+
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 Denver's Trusted Concrete Specialists
               </h1>
@@ -84,28 +116,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-           <div className="relative w-full max-w-xl mx-auto">
-              {/* Main background image */}
-              <Image
-                src="/images/Patio.jpeg"
-                alt="Main project photo"
-                width={600}
-                height={400}
-                className="rounded-lg w-full object-cover"
-                priority
-              />
-              {/* Logo banner overlay */}
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-full bg-white rounded-b-lg shadow-lg flex justify-center items-center py-2">
-                <Image
-                  src="/images/Luna Concrete Logo.png"
-                  alt="Luna Concrete Logo"
-                  width={100} // Adjust as needed
-                  height={60} // Adjust as needed
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -279,14 +290,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div>
-              <Card className="bg-white text-gray-900">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Get Your Free Quote</h3>
-                 <p>Thank you for your inquiry, we'll be in touch shortly with your free quote.</p>
-                </CardContent>
-              </Card>
-            </div>
+
           </div>
         </div>
       </section>
