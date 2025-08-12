@@ -41,7 +41,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
+      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-5 pb-20">
         <div className="container mx-auto px-4">
             <div className="flex items-center space-x-2 mb-4">
                 <Award className="h-6 w-6 text-orange-500" />

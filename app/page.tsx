@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-gray-900 text-white py-4 sticky top-0 z-50">
+      <header className="bg-gray-900 text-white py-2 sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-3 bg-white rounded p-1">
             <Image
@@ -43,10 +43,14 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
+      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-5 pb-20">
         <div className="container mx-auto px-4">
+          <div className="flex items-center space-x-2 mb-4">
+                <Award className="h-6 w-6 text-orange-500" />
+                <span className="text-orange-500 font-semibold">Trusted Since 1994</span>
+              </div>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-                       <div className="relative w-full max-w-xl mx-auto">
+            <div className="relative w-full max-w-xl mx-auto">
               {/* Main background image */}
               <Image
                 src="/images/Patio.jpeg"
@@ -69,10 +73,7 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Award className="h-6 w-6 text-orange-500" />
-                <span className="text-orange-500 font-semibold">Trusted Since 1994</span>
-              </div>
+
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 Denver's Trusted Concrete Specialists
               </h1>
