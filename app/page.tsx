@@ -75,7 +75,7 @@ export default function HomePage() {
             <div>
 
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Denver's Trusted Concrete Specialists
+                Luna Concrete
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 Over 30 years of delivering exceptional concrete solutions across the Denver metro area. From driveways
@@ -210,7 +210,7 @@ export default function HomePage() {
     'title': "Deck Installation",
     'description': "Stylish and durable concrete deck",
   }, {
-    'src': "/images/TransitoPattern.jpeg",
+    'src': "/images/transitoPattern.jpeg",
     'alt': "Concrete pattern project",
     'title': "Patterned Concrete",
     'description': "Unique and stylish patterned concrete",
@@ -419,7 +419,7 @@ export default function HomePage() {
           </div>
 
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Denver Concrete Pro. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Luna Concrete. All rights reserved.</p>
           </div>
         </div>
       </footer>
