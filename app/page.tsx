@@ -176,30 +176,10 @@ export default function HomePage() {
             <p className="text-xl text-gray-600">See the quality and craftsmanship that sets us apart</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="relative group overflow-hidden rounded-lg">
-              <Image
-                src="/images/Patio.jpeg"
-                alt="Beautiful concrete driveway project in Denver"
-                width={400}
-                height={300}
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <h3 className="text-lg font-semibold mb-2">Residential Driveway</h3>
-                  <p className="text-sm">Custom concrete driveway with decorative borders</p>
-                </div>
-              </div>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 place">
 
             {/* Placeholder for additional gallery images */}
             {[{
-    'src': "/images/TransitoStairs.jpeg",
-    'alt': "Concrete stairs project in Denver",
-    'title': "Staircase Project",
-    'description': "Durable and safe concrete stairs",
-  }, {
     'src': "/images/Patio.jpeg",
     'alt': "Beautiful concrete patio in Denver",
     'title': "Residential Patio",
@@ -219,6 +199,16 @@ export default function HomePage() {
     'alt': "Concrete patio project",
     'title': "Patio Installation",
     'description': "Beautiful and functional concrete patio",
+  },{
+    'src': "/images/TransitoStairs.jpeg",
+    'alt': "Concrete stairs project in Denver",
+    'title': "Staircase Project",
+    'description': "Durable and safe concrete stairs",
+  },{
+    'src': "/images/TransitoRentalJob.jpg",
+    'alt': "Refreshed concrete patio",
+    'title': "Rental House Project",
+    'description': "Solid concrete work for rental properties",
   }].map((item, index) => (
               <div key={index} className="relative group overflow-hidden rounded-lg">
                 <Image
@@ -260,8 +250,8 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-orange-500" />
-                  <a href="mailto:info@lunaconcrete.com" className="text-lg hover:underline">
-                    <span>info@lunaconcrete.com</span>
+                  <a href="mailto:lunaconcretejt@yahoo.com" className="text-lg hover:underline">
+                    <span>lunaconcretejt@yahoo.com</span>
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
