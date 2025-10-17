@@ -6,7 +6,7 @@ If you're trying to authenticate with GitHub and your password isn't working, th
 
 ### Why Your Password Doesn't Work
 
-**Important:** GitHub no longer accepts account passwords for Git operations as of August 13, 2021. You must use a **Personal Access Token (PAT)** instead.
+**Important:** GitHub deprecated password authentication for Git operations in August 2021. You must use a **Personal Access Token (PAT)** instead.
 
 ## Understanding git-credential-osxkeychain
 
@@ -124,11 +124,17 @@ Or use the command line:
 
 ```bash
 git credential-osxkeychain erase
-host=github.com
-protocol=https
 ```
 
-Press Enter twice after the last line to execute.
+Then type the following parameters (press Enter after each line):
+
+```
+host=github.com
+protocol=https
+
+```
+
+Press Enter one more time after the blank line to execute the command.
 
 ## Troubleshooting
 
