@@ -28,3 +28,10 @@ Continue building your app on:
 2. Deploy your chats from the v0 interface
 3. Changes are automatically pushed to this repository
 4. Vercel deploys the latest version from this repository
+
+## Git Authentication
+
+If you're having trouble authenticating with GitHub (e.g., your password doesn't work), see our [Authentication Guide](AUTHENTICATION.md) for help with:
+- Finding your Git credentials on macOS using `git-credential-osxkeychain`
+- Creating and using Personal Access Tokens
+- Setting up SSH authentication
