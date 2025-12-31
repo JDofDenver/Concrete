@@ -99,10 +99,10 @@ export default function HomePage() {
               </Link>
               </div>
               <div className="flex items-center space-x-6 text-sm">
-                <div className="flex items-center space-x-1">
+                {/* <div className="flex items-center space-x-1">
                   <Star className="h-4 w-4 text-yellow-500 fill-current" />
                   <span>Licensed & Insured</span>
-                </div>
+                </div> */}
                 <div className="flex items-center space-x-1">
                   <Calendar className="h-4 w-4 text-orange-500" />
                   <span>Free Estimates</span>
@@ -264,7 +264,7 @@ export default function HomePage() {
                 <h3 className="text-lg font-semibold mb-3">Why Choose Us?</h3>
                 <ul className="space-y-2 text-gray-300">
                   <li>✓ 30+ years of experience in Denver</li>
-                  <li>✓ Licensed and fully insured</li>
+                  {/* <li>✓ Licensed and fully insured</li> */}
                   <li>✓ Free estimates and consultations</li>
                   <li>✓ Quality materials and workmanship</li>
                   <li>✓ Competitive pricing</li>
@@ -380,7 +380,7 @@ export default function HomePage() {
               <p className="text-gray-400 mb-4">
                 Serving the Denver metro area with professional concrete services for over 30 years.
               </p>
-              <div className="text-sm text-gray-400">Licensed & Insured • Free Estimates</div>
+              <div className="text-sm text-gray-400">Free Estimates</div>
             </div>
 
             <div>
