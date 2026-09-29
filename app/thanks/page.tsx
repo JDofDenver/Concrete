@@ -1,10 +1,10 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Star, Calendar, Award } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+
+export const dynamic = "force-static"
 
 export default function HomePage() {
   return (
@@ -18,6 +18,7 @@ export default function HomePage() {
               alt="Luna Concrete Logo"
               width={48}
               height={48}
+              sizes="48px"
               className="object-contain h-12 w-auto"/>
           </div>
           <div className="hidden md:flex items-center space-x-6">
@@ -63,6 +64,7 @@ export default function HomePage() {
                 alt="Main project photo"
                 width={600}
                 height={400}
+                sizes="(min-width: 1024px) 576px, 100vw"
                 className="rounded-lg w-full object-cover"
                 priority
               />
@@ -71,10 +73,10 @@ export default function HomePage() {
                 <Image
                   src="/images/Luna Concrete Logo.png"
                   alt="Luna Concrete Logo"
-                  width={100} // Adjust as needed
-                  height={60} // Adjust as needed
+                  width={100}
+                  height={60}
+                  sizes="100px"
                   className="object-contain"
-                  priority
                 />
               </div>
             </div>
@@ -224,6 +226,7 @@ export default function HomePage() {
                   alt={item.alt || `Concrete project - Denver area`}
                   width={400}
                   height={300}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -296,6 +299,7 @@ export default function HomePage() {
                   alt="Luna Concrete Logo"
                   width={48}
                   height={48}
+                  sizes="48px"
                   className="object-contain h-12 w-auto"
                 />
               </div>

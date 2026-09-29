@@ -1,12 +1,11 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { QuoteForm } from "@/components/quote-form"
 import { Phone, Mail, MapPin, Star, Calendar, Award } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+
+export const dynamic = "force-static"
 
 export default function HomePage() {
   return (
@@ -20,6 +19,7 @@ export default function HomePage() {
               alt="Luna Concrete Logo"
               width={48}
               height={48}
+              sizes="48px"
               className="object-contain h-12 w-auto"/>
           </div>
           <div className="hidden md:flex items-center space-x-6">
@@ -57,6 +57,7 @@ export default function HomePage() {
                 alt="Main project photo"
                 width={600}
                 height={400}
+                sizes="(min-width: 1024px) 576px, 100vw"
                 className="rounded-lg w-full object-cover"
                 priority
               />
@@ -65,10 +66,10 @@ export default function HomePage() {
                 <Image
                   src="/images/Luna Concrete Logo.png"
                   alt="Luna Concrete Logo"
-                  width={100} // Adjust as needed
-                  height={60} // Adjust as needed
+                  width={100}
+                  height={60}
+                  sizes="100px"
                   className="object-contain"
-                  priority
                 />
               </div>
             </div>
@@ -216,6 +217,7 @@ export default function HomePage() {
                   alt={item.alt || `Concrete project - Denver area`}
                   width={400}
                   height={300}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -273,91 +275,7 @@ export default function HomePage() {
             </div>
 
             <div>
-              <Card className="bg-white text-gray-900">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Get Your Free Quote</h3>
-                  <form
-                    className="space-y-4"
-                    action="https://formsubmit.co/johndawson.inbox@gmail.com"
-                    method="POST"
-                  >
-            {/* Control inputs for form submission */}
-                    <input type="hidden" name="_autoresponse" value="Thank you for your submission!, We'll get back to you ASAP"></input>
-                    <input type="hidden" name="_next" value="http://localhost:3000/thanks"></input>
-                    <input type="hidden" name="_subject" value="New Quote Request to Luna Concrete"></input>
-                    <input type="hidden" name="_captcha" value="false"></input>
-                    <input type="hidden" name="_honeypot" value="honeypot" ></input>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                          First Name *
-                        </label>
-                        <Input id="firstName" name="firstName" type="text" required placeholder="John" />
-                      </div>
-                      <div>
-                        <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                          Last Name *
-                        </label>
-                        <Input id="lastName" name="lastName" type="text" required placeholder="Doe" />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">
-                        Email Address *
-                      </label>
-                      <Input id="email" name="email" type="email" required placeholder="john@example.com" />
-                    </div>
-
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                        Phone Number *
-                      </label>
-                      <Input id="phone" name="phone" type="tel" required placeholder="(303) 555-0123" />
-                    </div>
-
-                    <div>
-                      <label htmlFor="projectType" className="block text-sm font-medium mb-2">
-                        Project Type
-                      </label>
-                      <select
-                        id="projectType"
-                        name="projectType"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      >
-                        <option value="">Select a service</option>
-                        <option value="driveway">Driveway</option>
-                        <option value="patio">Patio</option>
-                        <option value="walkway">Walkway</option>
-                        <option value="foundation">Foundation</option>
-                        <option value="repair">Repair</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium mb-2">
-                        Project Details
-                      </label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        placeholder="Tell us about your project, timeline, and any specific requirements..."
-                      />
-                    </div>
-
-                    <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700 text-lg py-3">
-                      Get My Free Quote
-                    </Button>
-
-                    <p className="text-sm text-gray-600 text-center">
-                      We'll respond within 24 hours with your personalized quote
-                    </p>
-                  </form>
-                </CardContent>
-              </Card>
+              <QuoteForm />
             </div>
           </div>
         </div>
@@ -374,6 +292,7 @@ export default function HomePage() {
                   alt="Luna Concrete Logo"
                   width={48}
                   height={48}
+                  sizes="48px"
                   className="object-contain h-12 w-auto"
                 />
               </div>
