@@ -5,17 +5,82 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import Script from "next/script"
+import { useEffect, useRef, useState } from "react"
+
+const TURNSTILE_SITEKEY = "0x4AAAAAAFJ3fm_mB4gQ4H65"
+
+type TurnstileApi = {
+  render: (
+    container: HTMLElement,
+    options: {
+      sitekey: string
+      action: string
+      theme: "light" | "dark" | "auto"
+      callback: (token: string) => void
+      "expired-callback": () => void
+      "error-callback": () => void
+    },
+  ) => string
+  reset: (widgetId: string) => void
+  remove: (widgetId: string) => void
+  getResponse: (widgetId: string) => string | undefined
+}
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi
+  }
+}
 
 export function QuoteForm() {
   const router = useRouter()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const widgetIdRef = useRef("")
+  const [scriptReady, setScriptReady] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState("")
+
+  useEffect(() => {
+    if (!scriptReady || !containerRef.current || !window.turnstile || widgetIdRef.current) return
+    const container = containerRef.current
+    widgetIdRef.current = window.turnstile.render(container, {
+      sitekey: TURNSTILE_SITEKEY,
+      action: "contact",
+      theme: "light",
+      callback: (token) => setTurnstileToken(token),
+      "expired-callback": () => setTurnstileToken(""),
+      "error-callback": () => setTurnstileToken(""),
+    })
+
+    return () => {
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current)
+        widgetIdRef.current = ""
+      }
+    }
+  }, [scriptReady])
+
+  function resetTurnstile() {
+    setTurnstileToken("")
+    if (widgetIdRef.current && window.turnstile) {
+      window.turnstile.reset(widgetIdRef.current)
+    }
+  }
 
   async function handleQuoteSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const form = event.currentTarget
     const data = new FormData(form)
+    const token =
+      (widgetIdRef.current && window.turnstile?.getResponse(widgetIdRef.current)) ||
+      turnstileToken
+    if (!token) {
+      setError("Please complete the verification check.")
+      return
+    }
+
     setSubmitting(true)
     setError("")
 
@@ -31,15 +96,22 @@ export function QuoteForm() {
           projectType: data.get("projectType"),
           message: data.get("message"),
           company_website: data.get("company_website"),
+          "cf-turnstile-response": token,
         }),
       })
       if (!response.ok) {
-        setError("Something went wrong. Please try again or call (303) 880-9483.")
+        resetTurnstile()
+        setError(
+          response.status === 403
+            ? "Verification failed. Please try again."
+            : "Something went wrong. Please try again or call (303) 880-9483.",
+        )
         setSubmitting(false)
         return
       }
       router.push("/thanks")
     } catch {
+      resetTurnstile()
       setError("Something went wrong. Please try again or call (303) 880-9483.")
       setSubmitting(false)
     }
@@ -121,6 +193,13 @@ export function QuoteForm() {
             />
           </div>
 
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+            strategy="afterInteractive"
+            onLoad={() => setScriptReady(true)}
+          />
+          <div ref={containerRef} className="min-h-[65px]" />
+
           {error ? (
             <p className="text-sm text-red-600" role="alert">
               {error}
@@ -129,7 +208,7 @@ export function QuoteForm() {
 
           <Button
             type="submit"
-            disabled={submitting}
+            disabled={submitting || !turnstileToken}
             className="w-full bg-orange-600 hover:bg-orange-700 text-lg py-3"
           >
             {submitting ? "Sending..." : "Get My Free Quote"}

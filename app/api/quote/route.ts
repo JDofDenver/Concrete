@@ -8,6 +8,13 @@ function field(value: unknown, max = 2000): string {
   return value.trim().slice(0, max)
 }
 
+function turnstileResponse(value: unknown): string {
+  if (typeof value !== "string") return ""
+  const token = value.trim()
+  if (!token || token.length > 2048) return ""
+  return token
+}
+
 export async function POST(request: Request) {
   const apiKey = process.env.JOBSITE_API_KEY
   if (!apiKey) {
@@ -31,6 +38,11 @@ export async function POST(request: Request) {
   const raw = body as Record<string, unknown>
   if (field(raw.company_website)) {
     return NextResponse.json({ ok: true })
+  }
+
+  const turnstileToken = turnstileResponse(raw["cf-turnstile-response"])
+  if (!turnstileToken) {
+    return NextResponse.json({ error: "Verification failed." }, { status: 403 })
   }
 
   const firstName = field(raw.firstName, 100)
@@ -57,6 +69,7 @@ export async function POST(request: Request) {
   }
   if (jobType) payload.job_type = jobType
   if (message) payload.message = message
+  payload["cf-turnstile-response"] = turnstileToken
 
   const ip =
     request.headers.get("x-real-ip") ||
@@ -81,6 +94,10 @@ export async function POST(request: Request) {
       { error: "Could not send your request. Please call us." },
       { status: 502 },
     )
+  }
+
+  if (upstream.status === 403) {
+    return NextResponse.json({ error: "Verification failed." }, { status: 403 })
   }
 
   if (!upstream.ok) {
